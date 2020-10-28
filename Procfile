@@ -1,1 +1,1 @@
-web: gunicorn <filename>:<main method name>
+web: gunicorn COVID-Dashboard.wsgi --log-file -
