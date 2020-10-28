@@ -1,1 +1,1 @@
-web: gunicorn COVID-Dashboard.wsgi --log-file -
+web: gunicorn main --log-file -
