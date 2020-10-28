@@ -12,7 +12,7 @@ app.layout = html.Div(children=[
         symbol to graph:
     '''),
 
-    dcc.Input(id='input', value='', type='text'),
+    dcc.Input(id='input', value='tsla', type='text'),
     html.Div(id='output-graph')
 ])
 
