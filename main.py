@@ -1,21 +1,46 @@
 import dash
 import dash_core_components as dcc
+import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import pandas_datareader.data as web
 import datetime
 
-app = dash.Dash()
+app = dash.Dash(__name__,
+external_stylesheets=[dbc.themes.SANDSTONE])
+
 
 server = app.server
 
 app.layout = html.Div(children=[
-    html.Div(children='''
-        symbol to graph:
-    '''),
+    dbc.Row([
+        dbc.Col(html.H1(children='COVID-19 Dashboard'),width={'size':6, 'offset':3}),
+        dbc.Col(html.Div(children='''A dashboard of Covid Cases in the UK'''), width=4)
+    ]),
 
-    dcc.Input(id='input', value='tsla', type='text'),
-    html.Div(id='output-graph')
+    dbc.Row([
+        html.Div(children='''
+            symbol to graph:
+        '''),
+        dcc.Input(id='input', value='tsla', type='text')
+    ]),
+    dbc.Row([
+
+    ]),
+    dbc.Row([
+        dbc.Col(html.Div(id='output-graph'), width=6),
+
+        dbc.Col(dcc.Graph(
+            id='example-graph',
+            figure={
+                'data': [
+                    {'x':['Jan','Feb','Mar','Apr','May'], 'y': [4,1,2,5,8], 'type': 'line', 'name': 'Cases'},
+                    {'x':['Jan','Feb','Mar','Apr','May'], 'y': [2,4,5,1,5], 'type': 'line', 'name': 'Deaths'},
+                ]
+
+            }
+        ), width=6)
+    ])
 ])
 
 @app.callback(
