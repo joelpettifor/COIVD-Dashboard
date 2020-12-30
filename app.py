@@ -3,6 +3,6 @@ import dash_bootstrap_components as dbc
 
 external_stylesheets = [dbc.themes.SANDSTONE]
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets, url_base_pathname='/overview/')
 server = app.server
 app.config.suppress_callback_exceptions = True

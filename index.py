@@ -36,12 +36,13 @@ app.layout = html.Div([
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
 def display_page(pathname):
-    if pathname == '/uk-covid-dashboard' or pathname == '/uk-covid-dashboard/overview/':
+    if pathname == '/overview/':
         return layout_overview
-    elif pathname == '/uk-covid-dashboard/local-trend/':
+    elif pathname == '/local-trend/':
         return layout_local_trend
     else:
         return noPage
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
