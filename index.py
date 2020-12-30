@@ -4,8 +4,8 @@ from dash.dependencies import Input, Output
 
 from app import server
 from app import app
-from layouts import layout_overview, layout_local_trend
-import callbacks
+from layouts import layout_overview, layout_local_trend, noPage
+
 
 app.index_string = ''' 
 <!DOCTYPE html>
@@ -21,6 +21,7 @@ app.index_string = '''
         <footer>
             {%config%}
             {%scripts%}
+            {%renderer%}
         </footer>
         <div>Uk Covid Data Dashboard</div>
     </body>
@@ -36,13 +37,13 @@ app.layout = html.Div([
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
 def display_page(pathname):
-    if pathname == '/overview/':
+    if pathname == '/' or pathname == '/overview/':
         return layout_overview
     elif pathname == '/local-trend/':
         return layout_local_trend
     else:
         return noPage
 
-
 if __name__ == '__main__':
     app.run_server(debug=True)
+
