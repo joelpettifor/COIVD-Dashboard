@@ -6,7 +6,6 @@ from app import server
 from app import app
 from layouts import layout_overview, layout_local_trend, noPage
 
-
 app.index_string = ''' 
 <!DOCTYPE html>
 <html>
@@ -44,6 +43,6 @@ def display_page(pathname):
     else:
         return noPage
 
+
 if __name__ == '__main__':
     app.run_server(debug=True)
-
