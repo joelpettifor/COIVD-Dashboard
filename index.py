@@ -2,7 +2,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-from app import server
+
 from app import app
 from layouts import layout_overview, layout_local_trend, noPage
 
@@ -43,6 +43,7 @@ def display_page(pathname):
     else:
         return noPage
 
+server = app.server
 
 if __name__ == '__main__':
     app.run_server(debug=True)
